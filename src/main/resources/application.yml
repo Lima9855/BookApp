@@ -19,3 +19,8 @@ astra.db:
     region: europe-west1
     keyspace: main
     application.token: AstraCS:TfySwvbeUbseeLpeGZJIMpDI:d644d0e76413e9d36c286b12172c30e1294edde104e712243a778800b806d11d
+
+
+datadump.location:
+  author: C:\java projekty\pliki do projektów\bookapp\test-authors.txt
+  works: C:\java projekty\pliki do projektów\bookapp\test-works.txt

@@ -1,4 +1,4 @@
-package connection;
+package sf.lima.bookapp.connection;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
