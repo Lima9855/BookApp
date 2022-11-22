@@ -23,7 +23,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@Component
+
+
+/**
+ * used to load starter data to cassandra
+ *
+ */
+//@Component
 public class DataLoader {
     @Autowired
     AuthorRepository authorRepository;
@@ -41,15 +47,12 @@ public class DataLoader {
         try (Stream<String> lines = Files.lines(path)) {
             lines.forEach(line -> {
                 try {
-                    // read and parse the line
                     String jsonString = line.substring(line.indexOf("{"));
                     JSONObject jsonObject = new JSONObject(jsonString);
-                    //construct author obj
                     Author author = new Author();
                     author.setName(jsonObject.optString("name"));
                     author.setPersonalName(jsonObject.optString("personal_name"));
                     author.setId(jsonObject.optString("key").replace("/authors/", ""));
-                    // persist using repo
                     authorRepository.save(author);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -68,10 +71,8 @@ public class DataLoader {
         try (Stream<String> lines = Files.lines(path)) {
             lines.forEach(line -> {
                 try {
-                    // read and parse the line
                     String jsonString = line.substring(line.indexOf("{"));
                     JSONObject jsonObject = new JSONObject(jsonString);
-                    //construct book obj
                     Book book = new Book();
                     book.setId(jsonObject.optString("key").replace("/works/", ""));
                     book.setName(jsonObject.optString("title"));
@@ -108,7 +109,6 @@ public class DataLoader {
                         book.setAuthorNames(authorNames);
 
                     }
-                    // persist using repo
                     System.out.println("BOOK " + book.getId() + " is saved");
                     bookRepository.save(book);
 
@@ -123,10 +123,10 @@ public class DataLoader {
 
     }
 
-    @PostConstruct
+
     public void start() {
         //initAuthors();
-        initWorks();
+        //initWorks();
         System.out.println("działam");
     }
 }

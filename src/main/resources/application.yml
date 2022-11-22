@@ -1,4 +1,17 @@
 spring:
+  application:
+    name: bookapp
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 269553127839-pgtr36olrakjifvau2g393frhhb58tg9.apps.googleusercontent.com
+            client-secret: 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
+          github:
+            client-id: Iv1.dc8d285c0052393a
+            client-secret: f17be8f05ed97cc27282af7170e5c9a8d3a12df1
+
   data:
     cassandra:
       keyspace-name: main
