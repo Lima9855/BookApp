@@ -120,4 +120,22 @@ public class BooksByUser {
     public void setCoverUrl(String coverUrl) {
         this.coverUrl = coverUrl;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        BooksByUser that = (BooksByUser) o;
+
+        if (!id.equals(that.id)) return false;
+        return bookId.equals(that.bookId);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + bookId.hashCode();
+        return result;
+    }
 }

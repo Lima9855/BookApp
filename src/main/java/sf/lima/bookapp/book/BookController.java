@@ -13,7 +13,7 @@ import sf.lima.bookapp.userbooks.UserBooksRepository;
 
 import java.util.Optional;
 
-@Controller("/books")
+@Controller()
 public class BookController {
     private final String COVER_IMAGE_ROOT = "http://covers.openlibrary.org/b/id/";
     @Autowired
@@ -21,7 +21,7 @@ public class BookController {
     @Autowired
     UserBooksRepository userBooksRepository;
 
-    @GetMapping(value = "/{bookId}")
+    @GetMapping(value = "/books/{bookId}")
     public String getBook(@PathVariable String bookId, Model model, @AuthenticationPrincipal OAuth2User principal) {
         Optional<Book> optionalBook = bookRepository.findById(bookId);
         if (optionalBook.isPresent()) {
